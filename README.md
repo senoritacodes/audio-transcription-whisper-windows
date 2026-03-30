@@ -27,6 +27,35 @@ Simple Windows UI app for running local whisper transcription and saving one `.t
 - Auto-converts `m4a/aac/wma/opus/mp4/m4b` to temporary WAV using `ffmpeg` before transcription.
 - At startup, warns if `ffmpeg` is missing and offers to install with `winget`.
 
+## Setup (First Time)
+
+1. Download a Windows build of `whisper.cpp` that includes `whisper-cli.exe`.
+   - Use the official `whisper.cpp` GitHub Releases page and pick the latest Windows binary package.
+2. Extract it (example: `D:\whisper\whisper-bin-x64\Release\whisper-cli.exe`).
+3. Download a Whisper model `.bin` file (example: `ggml-large-v3-q5_0.bin` or `ggml-large-v3-q8_0.bin`).
+4. In the app, set:
+   - `Whisper EXE` -> your `whisper-cli.exe`
+   - `Model (.bin)` -> your downloaded model file
+
+## ffmpeg Installation
+
+`ffmpeg` is needed for non-native formats (`m4a/aac/wma/opus/mp4/m4b`).
+
+You can install it either way:
+
+1. In-app install (recommended):
+   - Start the app.
+   - If `ffmpeg` is missing, you will see a popup:
+     - `Yes`: app installs ffmpeg automatically using `winget`
+     - `No`: you install it manually later
+2. Manual install:
+   - Run:
+     ```powershell
+     winget install Gyan.FFmpeg
+     ```
+   - Or place `ffmpeg.exe` next to `whisper-cli.exe`
+   - Or add `ffmpeg` to your system PATH
+
 ## Run
 
 1. Double-click `run-transcriber.cmd`
@@ -55,6 +84,6 @@ You can edit this prompt in the UI before each run.
 ## Troubleshooting
 
 - If the executable is not found, browse manually to `whisper-cli.exe`.
-- If transcription fails for a compressed format, convert audio to WAV first.
+- If transcription fails for a compressed format, make sure `ffmpeg` is installed (or use WAV/MP3/OGG/FLAC).
 - If speaker labels are weak, keep `-tdrz` enabled and refine the prompt wording.
-- If you use `m4a/aac/wma/opus/mp4/m4b`, make sure `ffmpeg.exe` is installed and available in PATH (or placed next to `whisper-cli.exe`).
+- If you use `m4a/aac/wma/opus/mp4/m4b`, ensure `ffmpeg.exe` is available in PATH or next to `whisper-cli.exe`.
