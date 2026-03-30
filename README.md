@@ -31,7 +31,7 @@ Simple Windows UI app for running local whisper transcription and saving one `.t
 
 1. Download a Windows build of `whisper.cpp` that includes `whisper-cli.exe`.
    - Use the official `whisper.cpp` GitHub Releases page and pick the latest Windows binary package.
-2. Extract it (example: `D:\whisper\whisper-bin-x64\Release\whisper-cli.exe`).
+2. Extract it (example: `D:\audio-transcription-whisper-windows\whisper-bin-x64\Release\whisper-cli.exe`).
 3. Download a Whisper model `.bin` file (example: `ggml-large-v3-q5_0.bin` or `ggml-large-v3-q8_0.bin`).
 4. In the app, set:
    - `Whisper EXE` -> your `whisper-cli.exe`
@@ -70,8 +70,8 @@ You can install it either way:
 
 Use a large-v3 quantized model when available, such as:
 
-- `ggml-large-v3-q5_0.bin` (Q5)
-- `ggml-large-v3-q8_0.bin` (Q8)
+- `ggml-large-v3.bin`
+- `ggml-large-v2-q8_0.bin` (Q8)
 
 You can download the model later and then select it in the UI.
 
